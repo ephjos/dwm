@@ -129,7 +129,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("sysact") },
 
 	{ MODKEY,			XK_Tab,		view,		{0} },
-	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
@@ -155,7 +154,6 @@ static Key keys[] = {
 	{ MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") },
 	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") },
 	{ MODKEY,			XK_backslash,		view,		{0} },
-	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
@@ -179,7 +177,7 @@ static Key keys[] = {
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
+	{ MODKEY|ShiftMask,			XK_z,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
@@ -221,12 +219,11 @@ static Key keys[] = {
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
-	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
-	{ MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") },
-	{ MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") },
-	{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
-	{ MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
+	{ 0,			XK_Print,	spawn,		SHCMD("rofi_maim") },
+
+	{ MODKEY, XK_x,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+	{ MODKEY|ShiftMask, XK_x,	spawn,		SHCMD("rofi_shutdown") },
+	{ MODKEY, XK_Escape,	spawn,		SHCMD("rofi_logout") },
 
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
