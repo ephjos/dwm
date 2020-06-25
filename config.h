@@ -18,7 +18,7 @@ static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#770000";
-static char selbgcolor[]            = "#005577";
+static char selbgcolor[]            = "#000000";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -158,9 +158,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
 	{ MODKEY,			XK_s,		togglesticky,	{0} },
-	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
-	/* { MODKEY,			XK_d,		spawn,		SHCMD("") } }, */
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
@@ -176,17 +174,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
-	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY|ShiftMask,			XK_z,		incrgaps,	{.i = -3 } },
-	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
-	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e nvim -c VimwikiIndex") },
-	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
-	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
 	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },
@@ -204,18 +195,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Page_Down,	shifttag,	{ .i = +1 } },
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
-	{ MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
-	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
-	{ MODKEY,			XK_F4,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
-	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
-	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
-	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
-	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
+	//{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
+	//{ MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
+	//{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
+	//{ MODKEY,			XK_F4,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+	//{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
+	//{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
+	//{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
+	//{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
+	//{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
+	//{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	{ MODKEY,			XK_F12,		xrdb,		{.v = NULL } },
+	//{ MODKEY,			XK_F12,		xrdb,		{.v = NULL } },
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
@@ -252,23 +243,6 @@ static Key keys[] = {
 	{ 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
-
-	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
-	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
-	/* { MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } }, */
-	/* { MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } }, */
-	/* { MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } }, */
-	/* { MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } }, */
-	/* { MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} }, */
-	/* { MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } }, */
-	/* { MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } }, */
-	/* { MODKEY|ControlMask,           XK_y,      incrivgaps,     {.i = +1 } }, */
-	/* { MODKEY|ControlMask,           XK_o,      incrivgaps,     {.i = -1 } }, */
-	/* { MODKEY|Mod4Mask,              XK_y,      incrohgaps,     {.i = +1 } }, */
-	/* { MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } }, */
-	/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
-	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
-
 };
 
 /* button definitions */
