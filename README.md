@@ -7,3 +7,4 @@ The Dynamic Window Manager
 - Emoji
 - Mount/Unmount
 - ssh menu
+- Simple HTML user guide?
