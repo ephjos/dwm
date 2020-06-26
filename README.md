@@ -58,6 +58,8 @@ mod (or super) is the Windows key
 | mod+PageUp | Cycle tag view (Reverse) |
 | mod+Shift+PageUp | Cycle window through tag (reverse) |
 | mod+Insert | See contents of clipboard |
+| mod+F9 | Mounting menu |
+| mod+F10 | Unmounting menu |
 | mod+F11 | Run webcam |
 | mod+Space | Zoom |
 | mod+Shift+Space | Toggle floating |
@@ -69,10 +71,5 @@ mod (or super) is the Windows key
 ### Mouse
 
 If a window is floating, mod+Left_click allows the window to be dragged around, mod+Right_Click allows the window to be resized
-
-# TODO
-
-- Mount/Unmount
-
 
 
