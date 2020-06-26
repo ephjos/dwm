@@ -67,6 +67,7 @@ mod (or super) is the Windows key
 | mod+x | Lock screen |
 | mod+Shift+x | Shutdown menu |
 | mod+Esc | Logout menu |
+| mod+Shift+Esc | Restart dwm |
 
 ### Mouse
 

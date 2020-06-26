@@ -217,6 +217,7 @@ static Key keys[] = {
 	{ MODKEY, XK_x,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
 	{ MODKEY|ShiftMask, XK_x,	spawn,		SHCMD("rofi_shutdown") },
 	{ MODKEY, XK_Escape,	spawn,		SHCMD("rofi_logout") },
+	{ MODKEY|ShiftMask, XK_Escape,	spawn,		SHCMD("killall dwm") },
 
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
