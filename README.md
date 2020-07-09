@@ -58,6 +58,9 @@ mod (or super) is the Windows key
 | mod+PageUp | Cycle tag view (Reverse) |
 | mod+Shift+PageUp | Cycle window through tag (reverse) |
 | mod+Insert | See contents of clipboard |
+| mod+F1 | Start recording main monitor (saved in ~/vd)|
+| mod+F2 | Stop all recording |
+| mod+F3 | Open newsboat |
 | mod+F9 | Mounting menu |
 | mod+F10 | Unmounting menu |
 | mod+F11 | Run webcam |
