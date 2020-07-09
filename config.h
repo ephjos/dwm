@@ -200,7 +200,7 @@ static Key keys[] = {
 
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("record") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("stoprecord") },
-	//{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
+	{ MODKEY,			XK_F3,		spawn,		SHCMD("st -e newsboat") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	//{ MODKEY,			XK_F5,		xrdb,		{.v = NULL } },
 	//{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
