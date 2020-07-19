@@ -64,6 +64,7 @@ mod (or super) is the Windows key
 | mod+F9 | Mounting menu |
 | mod+F10 | Unmounting menu |
 | mod+F11 | Run webcam |
+| mod+F12 | Show status notification |
 | mod+Space | Zoom |
 | mod+Shift+Space | Toggle floating |
 | PrtSc | Open screenshot menu |
