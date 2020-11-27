@@ -215,7 +215,7 @@ static Key keys[] = {
 
 	{ 0,			XK_Print,	spawn,		SHCMD("rofi_maim") },
 
-	{ MODKEY, XK_x,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+	{ MODKEY, XK_x,	spawn,		SHCMD("(slock && xset -dpms && xset s off && xset r rate 300 50) & xset dpms force off;") },
 	{ MODKEY|ShiftMask, XK_x,	spawn,		SHCMD("rofi_shutdown") },
 	{ MODKEY, XK_Escape,	spawn,		SHCMD("rofi_logout") },
 	{ MODKEY|ShiftMask, XK_Escape,	spawn,		SHCMD("killall dwm") },
@@ -236,7 +236,7 @@ static Key keys[] = {
 	{ 0, XF86XK_Sleep,		spawn,		SHCMD("sudo -A zzz") },
 	{ 0, XF86XK_WWW,		spawn,		SHCMD("$BROWSER") },
 	{ 0, XF86XK_DOS,		spawn,		SHCMD("st") },
-	{ 0, XF86XK_ScreenSaver,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+	{ 0, XF86XK_ScreenSaver,	spawn,		SHCMD("(slock && xset -dpms && xset s off && xset r rate 300 50) & xset dpms force off;") },
 	{ 0, XF86XK_TaskPane,		spawn,		SHCMD("st -e htop") },
 	{ 0, XF86XK_Mail,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
 	{ 0, XF86XK_MyComputer,		spawn,		SHCMD("st -e lf /") },
