@@ -64,13 +64,12 @@ mod (or super) is the Windows key
 | mod+F9 | Mounting menu |
 | mod+F10 | Unmounting menu |
 | mod+F11 | Run webcam |
-| mod+F12 | Show status notification |
+| mod+F12 | N/A |
 | mod+Space | Zoom |
 | mod+Shift+Space | Toggle floating |
 | PrtSc | Open screenshot menu |
 | mod+x | Lock screen |
-| mod+Shift+x | Shutdown menu |
-| mod+Esc | Logout menu |
+| mod+Shift+x | Power menu |
 | mod+Shift+Esc | Restart dwm |
 
 ### Mouse

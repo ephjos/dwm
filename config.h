@@ -113,7 +113,7 @@ static Key keys[] = {
   STACKKEYS(MODKEY,                          focus)
   STACKKEYS(MODKEY|ShiftMask,                push)
   /* { MODKEY|ShiftMask,    XK_Escape,  spawn,  SHCMD("") }, */
-  { MODKEY,     XK_grave, spawn,  SHCMD("rofi_emoji") },
+  { MODKEY,     XK_grave, spawn,  SHCMD("sd rofi emoji") },
   /* { MODKEY|ShiftMask,    XK_grave, togglescratch,  SHCMD("") }, */
   TAGKEYS(      XK_1,   0)
   TAGKEYS(      XK_2,   1)
@@ -199,26 +199,26 @@ static Key keys[] = {
   { MODKEY|ShiftMask,   XK_Page_Down, shifttag, { .i = +1 } },
   { MODKEY,     XK_Insert,  spawn,    SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-  { MODKEY,     XK_F1,    spawn,    SHCMD("record") },
-  { MODKEY,     XK_F2,    spawn,    SHCMD("stoprecord") },
+  { MODKEY,     XK_F1,    spawn,    SHCMD("sd record start") },
+  { MODKEY,     XK_F2,    spawn,    SHCMD("sd record stop") },
   { MODKEY,     XK_F3,    spawn,    SHCMD("st -e newsboat") },
   { MODKEY,     XK_F4,    spawn,    SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
   //{ MODKEY,     XK_F5,    xrdb,   {.v = NULL } },
   //{ MODKEY,     XK_F6,    spawn,    SHCMD("torwrap") },
   //{ MODKEY,     XK_F7,    spawn,    SHCMD("td-toggle") },
   //{ MODKEY,     XK_F8,    spawn,    SHCMD("mailsync") },
-  { MODKEY,     XK_F9,    spawn,    SHCMD("rofi_mount") },
-  { MODKEY,     XK_F10,   spawn,    SHCMD("rofi_unmount") },
+  { MODKEY,     XK_F9,    spawn,    SHCMD("sd rofi mount") },
+  { MODKEY,     XK_F10,   spawn,    SHCMD("sd rofi unmount") },
   { MODKEY,     XK_F11,   spawn,    SHCMD("mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0") },
-  { MODKEY,     XK_F12,   spawn,    SHCMD("notify") },
+  //{ MODKEY,     XK_F12,   spawn,    SHCMD("notify") },
   { MODKEY,     XK_space, zoom,   {0} },
   { MODKEY|ShiftMask,   XK_space, togglefloating, {0} },
 
-  { 0,      XK_Print, spawn,    SHCMD("rofi_maim") },
+  { 0,      XK_Print, spawn,    SHCMD("sd rofi maim") },
 
   { MODKEY, XK_x, spawn,    SHCMD("(slock && xset -dpms && xset s off && xset r rate 300 50) & xset dpms force off;") },
-  { MODKEY|ShiftMask, XK_x, spawn,    SHCMD("rofi_shutdown") },
-  { MODKEY, XK_Escape,  spawn,    SHCMD("rofi_logout") },
+  { MODKEY|ShiftMask, XK_x, spawn,    SHCMD("sd rofi power") },
+  //{ MODKEY, XK_Escape,  spawn,    SHCMD("") },
   { MODKEY|ShiftMask, XK_Escape,  spawn,    SHCMD("killall dwm") },
 
   { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
