@@ -101,6 +101,13 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+/* Commands bound to more than one key */
+#define VOLUME_MUTE "pamixer -t; kill -44 $(pidof dwmblocks)"
+#define VOLUME_UP "pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)"
+#define VOLUME_DOWN "pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)"
+#define BRIGHTNESS_UP "sudo light -A 3"
+#define BRIGHTNESS_DOWN "sudo light -U 3"
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "rofi", "-show", "run", NULL};
@@ -126,16 +133,16 @@ static Key keys[] = {
   TAGKEYS(      XK_9,   8)
   { MODKEY,     XK_0,   view,   {.ui = ~0 } },
   { MODKEY|ShiftMask,   XK_0,   tag,    {.ui = ~0 } },
-  { MODKEY,     XK_minus, spawn,    SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
-  { MODKEY|ShiftMask,   XK_minus, spawn,    SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
-  { MODKEY,     XK_equal, spawn,    SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
-  { MODKEY|ShiftMask,   XK_equal, spawn,    SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
+  { MODKEY,     XK_minus, spawn,    SHCMD(VOLUME_DOWN) },
+  { MODKEY,     XK_equal, spawn,    SHCMD(VOLUME_UP) },
+  { MODKEY|ShiftMask,   XK_minus, spawn,    SHCMD(BRIGHTNESS_DOWN) },
+  { MODKEY|ShiftMask,   XK_equal, spawn,    SHCMD(BRIGHTNESS_UP) },
   //{ MODKEY,     XK_BackSpace, spawn,    SHCMD("sysact") },
   //{ MODKEY|ShiftMask,   XK_BackSpace, spawn,    SHCMD("sysact") },
 
   { MODKEY,     XK_Tab,   view,   {0} },
   { MODKEY,     XK_q,   killclient, {0} },
-  { MODKEY|ShiftMask,   XK_q,   spawn,    SHCMD("sysact") },
+  //{ MODKEY|ShiftMask,   XK_q,   spawn,    SHCMD("sysact") },
   { MODKEY,     XK_w,   spawn,    SHCMD("$BROWSER") },
   { MODKEY|ShiftMask,   XK_w,   spawn,    SHCMD("st -e sudo nmtui") },
   //{ MODKEY,     XK_e,   spawn,    SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
@@ -152,7 +159,7 @@ static Key keys[] = {
   { MODKEY|ShiftMask,   XK_i,   setlayout,  {.v = &layouts[7]} }, /* centeredfloatingmaster */
   { MODKEY,     XK_o,   incnmaster,     {.i = +1 } },
   { MODKEY|ShiftMask,   XK_o,   incnmaster,     {.i = -1 } },
-  { MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
+  //{ MODKEY,     XK_p,     spawn,    SHCMD("mpc toggle") },
   //{ MODKEY|ShiftMask,   XK_p,     spawn,    SHCMD("mpc pause ; pauseallmpv") },
   //{ MODKEY,     XK_bracketleft,   spawn,    SHCMD("mpc seek -10") },
   //{ MODKEY|ShiftMask,   XK_bracketleft,   spawn,    SHCMD("mpc seek -60") },
@@ -182,7 +189,7 @@ static Key keys[] = {
   { MODKEY,     XK_z,   incrgaps, {.i = +3 } },
   { MODKEY|ShiftMask,     XK_z,   incrgaps, {.i = -3 } },
   { MODKEY,     XK_b,   togglebar,  {0} },
-  { MODKEY|ShiftMask,   XK_m,   spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+  { MODKEY|ShiftMask,   XK_m,   spawn,    SHCMD(VOLUME_MUTE) },
   //{ MODKEY,     XK_comma, spawn,    SHCMD("mpc prev") },
   //{ MODKEY|ShiftMask,   XK_comma, spawn,    SHCMD("mpc seek 0%") },
   //{ MODKEY,     XK_period,  spawn,    SHCMD("mpc next") },
@@ -221,9 +228,9 @@ static Key keys[] = {
   //{ MODKEY, XK_Escape,  spawn,    SHCMD("") },
   { MODKEY|ShiftMask, XK_Escape,  spawn,    SHCMD("killall dwm") },
 
-  { 0, XF86XK_AudioMute,    spawn,    SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-  { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-  { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+  { 0, XF86XK_AudioMute,    spawn,    SHCMD(VOLUME_MUTE) },
+  { 0, XF86XK_AudioRaiseVolume, spawn,    SHCMD(VOLUME_UP) },
+  { 0, XF86XK_AudioLowerVolume, spawn,    SHCMD(VOLUME_DOWN) },
   //{ 0, XF86XK_AudioPrev,    spawn,    SHCMD("mpc prev") },
   //{ 0, XF86XK_AudioNext,    spawn,    SHCMD("mpc next") },
   //{ 0, XF86XK_AudioPause,   spawn,    SHCMD("mpc pause") },
@@ -231,10 +238,10 @@ static Key keys[] = {
   //{ 0, XF86XK_AudioStop,    spawn,    SHCMD("mpc stop") },
   //{ 0, XF86XK_AudioRewind,  spawn,    SHCMD("mpc seek -10") },
   //{ 0, XF86XK_AudioForward, spawn,    SHCMD("mpc seek +10") },
-  { 0, XF86XK_AudioMedia,   spawn,    SHCMD("st -e ncmpcpp") },
-  { 0, XF86XK_PowerOff,   spawn,    SHCMD("sysact") },
+  //{ 0, XF86XK_AudioMedia,   spawn,    SHCMD("st -e ncmpcpp") },
+  //{ 0, XF86XK_PowerOff,   spawn,    SHCMD("sysact") },
   { 0, XF86XK_Calculator,   spawn,    SHCMD("st -e bc -l") },
-  { 0, XF86XK_Sleep,    spawn,    SHCMD("sudo -A zzz") },
+  //{ 0, XF86XK_Sleep,    spawn,    SHCMD("sudo -A zzz") },
   { 0, XF86XK_WWW,    spawn,    SHCMD("$BROWSER") },
   { 0, XF86XK_DOS,    spawn,    SHCMD("st") },
   { 0, XF86XK_ScreenSaver,  spawn,    SHCMD("slock") },
@@ -246,8 +253,8 @@ static Key keys[] = {
   { 0, XF86XK_TouchpadToggle, spawn,    SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
   { 0, XF86XK_TouchpadOff,  spawn,    SHCMD("synclient TouchpadOff=1") },
   { 0, XF86XK_TouchpadOn,   spawn,    SHCMD("synclient TouchpadOff=0") },
-  { 0, XF86XK_MonBrightnessUp,  spawn,    SHCMD("xbacklight -inc 15") },
-  { 0, XF86XK_MonBrightnessDown,  spawn,    SHCMD("xbacklight -dec 15") },
+  { 0, XF86XK_MonBrightnessUp,  spawn,    SHCMD(BRIGHTNESS_UP) },
+  { 0, XF86XK_MonBrightnessDown,  spawn,    SHCMD(BRIGHTNESS_DOWN) },
 };
 
 /* button definitions */

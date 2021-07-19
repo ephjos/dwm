@@ -13,6 +13,7 @@ mod (or super) is the Windows key
 | mod+0 | View all tags |
 | mod+Shift+[0..9] | Move window to tag |
 | mod+[+,-] | Control volume |
+| mod+Shift+[+,-] | Control backlight |
 | mod+Tab | Swap previous tag view |
 | mod+q | Close window |
 | mod+w | Open browser |
